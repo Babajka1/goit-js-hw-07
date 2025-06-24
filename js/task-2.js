@@ -26,10 +26,15 @@ const images = [
 ];
 const galleryContainer = document.querySelector(".gallery");
 
-const galleryMarkup = images
-  .map((image) => {
-    return `<li><img src="${image.url}" alt="${image.alt}" width="300" /></li>`;
-  })
-  .join("");
+const items = images.map((image) => {
+  const li = document.createElement("li");
+  const img = document.createElement("img");
 
-galleryContainer.innerHTML = galleryMarkup;
+  img.src = image.url;
+  img.alt = image.alt;
+
+  li.append(img);
+  return li;
+});
+
+galleryContainer.append(...items);
